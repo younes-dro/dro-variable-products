@@ -1,0 +1,108 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28 sept. 2019, 18:26:50
+    Author     : dro
+*/
+@media screen and (max-width:600px){
+    .qib-container .quantity input.qty:not(#qib_id){
+        width: 35px;
+    }
+}
+.custom-field-checkbox{
+    font-family: sans-serif;
+    font-size: 14px;
+}
+.fa-info-circle{
+    color: #2b75b5; cursor: pointer;
+}
+i.infos{
+    margin-left: 10px;
+}
+.popup-infos{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    /* background-color: #00000061; */
+    left: 0;
+    z-index: 8010;
+    top: 0;
+    color: #fff;
+    display: none;
+}
+
+.popup-content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: hsla(0, 0%, 0%, 0.70);
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    color: #000;
+    padding-top: 100px;
+}
+.popup-content div.content{
+    /* border: 1px solid #f00; */
+    position: relative;
+    width: 90%;
+    /* max-height: 378px; */
+    background-color: #fff;
+    margin: 0 auto;
+    color: #000;
+    /* padding-right: 10px; */
+    padding: 76px 10px 10px 10px;
+    box-shadow: 0px 0px 20px #000;
+}
+.popup-content div.content h1.header-popup{
+    background-color: #F25929;
+    font-size: .9em;
+    color: #fff;
+    width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-top: 14px;
+    padding-bottom: 16px;
+    padding-right: 20px;
+    padding-left: 10px;
+    text-align: center;
+}
+.popup-content div.content p{
+    font-size: 12px;
+    word-break: break-word;
+}
+.popup-content div.content span.close-popup{
+    /* display: block; */
+    text-align: right;
+    padding-right: 10px;
+    height: 45px;
+    /* vertical-align: 45px; */
+    padding-top: 10px;
+    cursor: pointer;
+    /* border: 1px solid; */
+    width: 45px;
+    /* float: right; */
+    position: absolute;
+    top: 0;
+    right: 0;
+
+}
+input[type="checkbox"]{
+    transform: scale(2);
+    -webkit-transform: scale(2);
+    margin: 0px 10px 10px;
+}
+@media screen and (min-width: 768px){
+    .popup-content div.content h1.header-popup{
+        font-size: 1em;
+    }
+    .popup-content div.content{
+        width: 60%;
+    }
+
+}

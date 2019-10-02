@@ -63,6 +63,36 @@ function woocommerce_ajax_add_to_cart() {
                         $cart_item_data['_deux'] = $_POST['_deux'][$variation_id];
                         return $cart_item_data;
                     }, 10, 4 );
+                } 
+                if(isset( $_POST['_sans_queue'][$variation_id] )){
+                    add_filter( 'woocommerce_add_cart_item_data', function($cart_item_data, $product_id, $variation_id, $quantity){
+                        $cart_item_data['_sans_queue'] = $_POST['_sans_queue'][$variation_id];
+                        return $cart_item_data;
+                    }, 10, 4 );
+                }
+                if(isset( $_POST['_avec_peau'][$variation_id] )){
+                    add_filter( 'woocommerce_add_cart_item_data', function($cart_item_data, $product_id, $variation_id, $quantity){
+                        $cart_item_data['_avec_peau'] = $_POST['_avec_peau'][$variation_id];
+                        return $cart_item_data;
+                    }, 10, 4 );
+                }                
+                if(isset( $_POST['_sans_peau'][$variation_id] )){
+                    add_filter( 'woocommerce_add_cart_item_data', function($cart_item_data, $product_id, $variation_id, $quantity){
+                        $cart_item_data['_sans_peau'] = $_POST['_sans_peau'][$variation_id];
+                        return $cart_item_data;
+                    }, 10, 4 );
+                }
+                if(isset( $_POST['_coupe_deux'][$variation_id] )){
+                    add_filter( 'woocommerce_add_cart_item_data', function($cart_item_data, $product_id, $variation_id, $quantity){
+                        $cart_item_data['_coupe_deux'] = $_POST['_coupe_deux'][$variation_id];
+                        return $cart_item_data;
+                    }, 10, 4 );
+                }
+                if(isset( $_POST['_cuisson'][$variation_id] )){
+                    add_filter( 'woocommerce_add_cart_item_data', function($cart_item_data, $product_id, $variation_id, $quantity){
+                        $cart_item_data['_cuisson'] = $_POST['_cuisson'][$variation_id];
+                        return $cart_item_data;
+                    }, 10, 4 );
                 }                
 
                 if ($passed_validation && WC()->cart->add_to_cart($product_id, $quantity, $variation_id) && 'publish' === $product_status) {

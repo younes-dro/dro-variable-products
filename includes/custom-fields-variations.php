@@ -1,6 +1,7 @@
 <?php
 //Add our Custom Field ( main / promo prix kg )to simple product
-add_action( 'woocommerce_product_options_sku', 'dro_woo_add_custom_fields' ); // After SKU field
+//add_action( 'woocommerce_product_options_sku', 'dro_woo_add_custom_fields' ); // After SKU field
+add_action( 'woocommerce_product_options_general_product_data', 'dro_woo_add_custom_fields' ); // After all General default fields
 //Save our Custom Field ( main / promo prix kg )to simple product
 add_action( 'woocommerce_process_product_meta', 'dro_woo_add_custom_fields_save' );
 // Add Variation Settings
@@ -147,6 +148,46 @@ function variation_settings_fields($loop, $variation_data, $variation) {
                 'value' => get_post_meta($variation->ID, '_deux', true),
             )
     );
+    woocommerce_wp_checkbox(
+            array(
+                'id' => '_sans_queue[' . $variation->ID . ']',
+                'label' => __('Sans queue', 'woocommerce'),
+                'description' => __('', 'woocommerce'),
+                'value' => get_post_meta($variation->ID, '_sans_queue', true),
+            )
+    );
+    woocommerce_wp_checkbox(
+            array(
+                'id' => '_avec_peau[' . $variation->ID . ']',
+                'label' => __('Avec peau', 'woocommerce'),
+                'description' => __('', 'woocommerce'),
+                'value' => get_post_meta($variation->ID, '_avec_peau', true),
+            )
+    );    
+    woocommerce_wp_checkbox(
+            array(
+                'id' => '_sans_peau[' . $variation->ID . ']',
+                'label' => __('Sans peau', 'woocommerce'),
+                'description' => __('', 'woocommerce'),
+                'value' => get_post_meta($variation->ID, '_sans_peau', true),
+            )
+    );
+    woocommerce_wp_checkbox(
+            array(
+                'id' => '_coupe_deux[' . $variation->ID . ']',
+                'label' => __('Coupé en deux', 'woocommerce'),
+                'description' => __('', 'woocommerce'),
+                'value' => get_post_meta($variation->ID, '_coupe_deux', true),
+            )
+    );
+    woocommerce_wp_checkbox(
+            array(
+                'id' => '_cuisson[' . $variation->ID . ']',
+                'label' => __('Pour cuisson en croûte de sel', 'woocommerce'),
+                'description' => __('', 'woocommerce'),
+                'value' => get_post_meta($variation->ID, '_cuisson', true),
+            )
+    );    
 
 
     // Hidden field  
@@ -203,12 +244,23 @@ function save_variation_settings_fields($post_id) {
     $title_sans_tete = isset($_POST['_sans_tete'][$post_id]) ? $_POST['_sans_tete'][$post_id] : '';
     $title_sans_ecaille = isset($_POST['_sans_ecaille'][$post_id]) ? $_POST['_sans_ecaille'][$post_id] : '';
     $title_deux = isset($_POST['_deux'][$post_id]) ? $_POST['_deux'][$post_id] : '';
+    $title_sans_queue = isset($_POST['_sans_queue'][$post_id]) ? $_POST['_sans_queue'][$post_id] : '';
+    $title_avec_peau = isset($_POST['_avec_peau'][$post_id]) ? $_POST['_avec_peau'][$post_id] : '';
+    $title_sans_peau = isset($_POST['_sans_peau'][$post_id]) ? $_POST['_sans_peau'][$post_id] : '';
+    $title_coupe_deux = isset($_POST['_coupe_deux'][$post_id]) ? $_POST['_coupe_deux'][$post_id] : '';
+    $title_cuisson = isset($_POST['_cuisson'][$post_id]) ? $_POST['_cuisson'][$post_id] : '';
 
 
     $product->update_meta_data('_entier', sanitize_text_field($title_entier));
     $product->update_meta_data('_sans_tete', sanitize_text_field($title_sans_tete));
     $product->update_meta_data('_sans_ecaille', sanitize_text_field($title_sans_ecaille));
     $product->update_meta_data('_deux', sanitize_text_field($title_deux));
+    $product->update_meta_data('_sans_queue', sanitize_text_field($title_sans_queue));
+    $product->update_meta_data('_avec_peau', sanitize_text_field($title_avec_peau));
+    $product->update_meta_data('_sans_peau', sanitize_text_field($title_sans_peau));
+    $product->update_meta_data('_coupe_deux', sanitize_text_field($title_coupe_deux));
+    $product->update_meta_data('_cuisson', sanitize_text_field($title_cuisson));
+    
 
     $product->save();
 
